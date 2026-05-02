@@ -1,0 +1,36 @@
+🚀 Starting ingestion process...
+Processing data/security\it security and data privacy.txt...Category: security
+Loaded 1 documents from data/security\it security and data privacy.txt
+Total documents loaded: 1
+Header-based split resulted in 17 chunks for document: data/security\it security and data privacy.txt
+page_content='**Document ID:** SEC-POL-8005-V7
+**Effective Date:** June 1, 2026
+**Last Revised:** April 15, 2026
+**Policy Owner:** Chief Information Security Officer (CISO)
+**Applies To:** All employees, contractors, third-party vendors, and any entity with provisioned access to the corporate network or data infrastructure.  
+---' metadata={'h1': 'Global IT Security, Data Classification, and Acceptable Use Policy', 'source': 'data/security\\it security and data privacy.txt', 'policy_category': 'security'}
+----------------------
+Table preservation resulted in 17 chunks for document: data/security\it security and data privacy.txt
+page_content='**Document ID:** SEC-POL-8005-V7
+**Effective Date:** June 1, 2026
+**Last Revised:** April 15, 2026
+**Policy Owner:** Chief Information Security Officer (CISO)
+**Applies To:** All employees, contractors, third-party vendors, and any entity with provisioned access to the corporate network or data infrastructure.  
+---' metadata={'h1': 'Global IT Security, Data Classification, and Acceptable Use Policy', 'source': 'data/security\\it security and data privacy.txt', 'policy_category': 'security'}
+----------------------
+Overlap applied resulted in 17 chunks for document: data/security\it security and data privacy.txt
+page_content='**Document ID:** SEC-POL-8005-V7
+**Effective Date:** June 1, 2026
+**Last Revised:** April 15, 2026
+**Policy Owner:** Chief Information Security Officer (CISO)
+**Applies To:** All employees, contractors, third-party vendors, and any entity with provisioned access to the corporate network or data infrastructure.  
+---' metadata={'h1': 'Global IT Security, Data Classification, and Acceptable Use Policy', 'source': 'data/security\\it security and data privacy.txt', 'policy_category': 'security'}
+----------------------
+Total chunks created: 17
+page_content='**Document ID:** SEC-POL-8005-V7
+**Effective Date:** June 1, 2026
+**Last Revised:** April 15, 2026
+**Policy Owner:** Chief Information Security Officer (CISO)
+**Applies To:** All employees, contractors, third-party vendors, and any entity with provisioned access to the corporate network or data infrastructure.  
+---' metadata={'h1': 'Global IT Security, Data Classification, and Acceptable Use Policy', 'source': 'data/security\\it security and data privacy.txt', 'policy_category': 'security'}
+✅ Ingestion complete!

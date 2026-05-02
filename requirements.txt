@@ -7,3 +7,5 @@ sentence-transformers
 pypdf
 python-dotenv
 ipykernel
+langchain-text-splitters
+pinecone-client
