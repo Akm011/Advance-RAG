@@ -1,6 +1,14 @@
 from sentence_transformers import CrossEncoder
+from dotenv import load_dotenv
+import os
 
-model = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+load_dotenv()
+token = os.getenv("HF_TOKEN")
+
+model = CrossEncoder(
+    "BAAI/bge-reranker-large",
+    token=token
+    )
 
 def rerank(query, documents):
     pairs = [(query, doc.page_content) for doc in documents]

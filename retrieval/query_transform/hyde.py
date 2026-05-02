@@ -1,14 +1,19 @@
-from openai import OpenAI
-import os
+from get_llm import get_llm
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# LLM writes fake answer → better semantic match
+llm = get_llm()
 
 def generate_hypothetical_answer(query):
-    prompt = f"Write a detailed policy-style answer for: {query}"
+    prompt = f"""
+    Generate a hypothetical policy answer to help retrieve relevant documents.
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    Guidelines:
+    - Use enterprise policy language (BYOD, MDM, compliance, access control)
+    - Do NOT introduce unrelated concepts
+    - Focus on likely requirements, not detailed procedures
+    - Keep it concise and factual
 
-    return response.choices[0].message.content
+    Query: {query}
+    """
+    response = llm.invoke(prompt)
+    return response.content
