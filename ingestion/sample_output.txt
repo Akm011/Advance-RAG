@@ -34,3 +34,101 @@ page_content='**Document ID:** SEC-POL-8005-V7
 **Applies To:** All employees, contractors, third-party vendors, and any entity with provisioned access to the corporate network or data infrastructure.  
 ---' metadata={'h1': 'Global IT Security, Data Classification, and Acceptable Use Policy', 'source': 'data/security\\it security and data privacy.txt', 'policy_category': 'security'}
 ✅ Ingestion complete!
+
+
+
+
+
+
+
+
+---------------------------------------------
+
+(.ragenv) PS C:\Users\MAURYA\Desktop\My Document\akm\Projects\Advance RAG-IITM Project1> python -m ingestion.run_ingestion
+🚀 Starting ingestion process...
+Processing data/security\it security and data privacy.txt...Category: security
+Loaded 1 documents from data/security\it security and data privacy.txt
+Processing data/training\learning and tuition.txt...Category: training
+Loaded 1 documents from data/training\learning and tuition.txt
+Processing data/travel\Fuel and Mileage Policy.txt...Category: travel
+Loaded 1 documents from data/travel\Fuel and Mileage Policy.txt
+Processing data/travel\International Travel.txt...Category: travel
+Loaded 1 documents from data/travel\International Travel.txt
+Processing data/travel\Travel Policy.txt...Category: travel
+Loaded 1 documents from data/travel\Travel Policy.txt
+Processing data/Work policies\code of conduct.txt...Category: Work policies
+Loaded 1 documents from data/Work policies\code of conduct.txt
+Processing data/Work policies\leave_and_absence.txt...Category: Work policies
+Loaded 1 documents from data/Work policies\leave_and_absence.txt
+Processing data/Work policies\performance and compensation.txt...Category: Work policies
+Loaded 1 documents from data/Work policies\performance and compensation.txt
+Total documents loaded: 8
+Header-based split resulted in 17 chunks for document: data/security\it security and data privacy.txt
+page_content='* **Definition:** Standard operational data. Disclosure would cause minimal harm but violates company confidentiality.
+* **Examples:** Internal org charts, standard operating procedures, intranet articles, company-wide meeting recordings.
+* **Storage/Sharing:** May be stored on approved cloud drives (Google Workspace/OneDrive). Cannot be shared with external parties without an NDA.' metadata={'h1': 'Global IT Security, Data Classification, and Acceptable Use Policy', 'h2': '2. Data Classification Matrix', 'h3': 'Tier 2: Internal Use Only', 'source': 'data/security\\it security and data privacy.txt', 'policy_category': 'security', 'document_id': '** SEC-POL-8005-V7', 'effective_date': '** June 1, 2026', 'policy_owner': '** Chief Information Security Officer (CISO)'}
+----------------------
+Table preservation resulted in 17 chunks for document: data/security\it security and data privacy.txt
+----------------------
+Overlap applied resulted in 17 chunks for document: data/security\it security and data privacy.txt
+----------------------
+Header-based split resulted in 20 chunks for document: data/training\learning and tuition.txt
+page_content='All employees must complete a 60-minute "Security and Compliance Refresher" annually by October 31st.
+* **Penalty for Non-Compliance:** Failure to complete mandatory training by the deadline will result in immediate suspension of corporate network access and formal disciplinary action (refer to *HR-POL-5050-V4: Code of Conduct*).' metadata={'h1': 'Corporate Policy: Global Learning, Development, and Tuition Assistance', 'h2': '2. Mandatory Compliance and Onboarding Training', 'h3': '2.2 Annual Refreshers', 'source': 'data/training\\learning and tuition.txt', 'policy_category': 'training', 'document_id': '** LND-POL-7010-V3', 'effective_date': '** May 1, 2026', 'policy_owner': '** Chief Learning Officer (CLO) & Global HR'}
+----------------------
+Table preservation resulted in 20 chunks for document: data/training\learning and tuition.txt
+----------------------
+Overlap applied resulted in 21 chunks for document: data/training\learning and tuition.txt
+----------------------
+Header-based split resulted in 27 chunks for document: data/travel\Fuel and Mileage Policy.txt
+page_content='The organization reimburses personal vehicle usage based on the standardized rates published annually by the national tax authority.
+* **Current Rate (Effective Jan 1, 2026):** $0.69 USD per business mile.
+* **What the Rate Covers:** The SMR is a comprehensive allowance. It is legally designed to cover the cost of petrol/diesel, routine maintenance, oil changes, tire wear, depreciation, and personal auto insurance.' metadata={'h1': 'Corporate Travel Policy: Personal Vehicle, Fuel, and Mileage Reimbursement', 'h2': '3. Personal Vehicle Usage: Standard Mileage Rate (SMR) Program', 'h3': '3.1 The Mileage Rate', 'source': 'data/travel\\Fuel and Mileage Policy.txt', 'policy_category': 'travel', 'document_id': '** TRV-POL-3012-V2', 'effective_date': '** April 1, 2026', 'policy_owner': '** Corporate Fleet Management & Global Finance'}
+----------------------
+Table preservation resulted in 27 chunks for document: data/travel\Fuel and Mileage Policy.txt
+----------------------
+Overlap applied resulted in 27 chunks for document: data/travel\Fuel and Mileage Policy.txt
+----------------------
+Header-based split resulted in 35 chunks for document: data/travel\International Travel.txt
+page_content='Employees are strictly prohibited from conducting official company business on a "Tourist Visa" unless explicitly cleared by the Global Mobility Legal Team. Traveling under false pretenses constitutes a Level 1 Policy Violation and grounds for immediate termination.
+* **Procurement:** All business visas, work permits, and invitation letters must be processed through the organization’s designated immigration vendor (Fragomen or equivalent).
+* **Reimbursement:** All costs associated with acquiring business visas (including consular fees, vendor processing fees, and mandatory passport photos) are 100% reimbursable.' metadata={'h1': 'Corporate Travel Policy: International Operations and Global Mobility', 'h2': '2. Passports, Visas, and Immigration Compliance', 'h3': '2.2 Visas and Work Authorizations', 'source': 'data/travel\\International Travel.txt', 'policy_category': 'travel', 'document_id': '** TRV-POL-2005-V3', 'effective_date': '** February 1, 2026', 'policy_owner': '** Global Corporate Travel, Risk Management, and Global Mobility (GCT-RM)'}
+----------------------
+Table preservation resulted in 35 chunks for document: data/travel\International Travel.txt
+----------------------
+Overlap applied resulted in 36 chunks for document: data/travel\International Travel.txt
+----------------------
+Header-based split resulted in 37 chunks for document: data/travel\Travel Policy.txt
+page_content='All business travel must be pre-approved before any non-refundable purchases are made. The authorization workflow is dictated by the estimated total cost of the trip, not including potential client entertainment.' metadata={'h1': 'Corporate Travel Policy: Standard and Client-Facing Operations', 'h2': '4. Pre-Travel Authorization Protocols', 'source': 'data/travel\\Travel Policy.txt', 'policy_category': 'travel', 'document_id': '** TRV-POL-1001-V4', 'effective_date': '** January 1, 2026', 'policy_owner': '** Global Corporate Travel and Expense Management (GCTEM)'}
+----------------------
+Table preservation resulted in 37 chunks for document: data/travel\Travel Policy.txt
+----------------------
+Overlap applied resulted in 43 chunks for document: data/travel\Travel Policy.txt
+----------------------
+Header-based split resulted in 26 chunks for document: data/Work policies\code of conduct.txt
+page_content='Managers and Supervisors hold a fiduciary duty to the organization. If a manager observes a Level 2 or Level 3 violation, or if an employee reports such a violation to them, the manager **must** report the incident to Human Resources within 24 hours. Failure by a manager to report a known violation constitutes a Level 2 disciplinary offense in itself.' metadata={'h1': 'Human Resources Policy: Global Code of Conduct and Disciplinary Procedures', 'h2': '2. Reporting Mechanisms and The Ethics Hotline', 'h3': '2.2 Mandatory Reporting for Management', 'source': 'data/Work policies\\code of conduct.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-5050-V4', 'effective_date': '** March 1, 2026', 'policy_owner': '** Chief Human Resources Officer (CHRO) & Office of the General Counsel'}
+----------------------
+Table preservation resulted in 26 chunks for document: data/Work policies\code of conduct.txt
+----------------------
+Overlap applied resulted in 28 chunks for document: data/Work policies\code of conduct.txt
+----------------------
+Header-based split resulted in 30 chunks for document: data/Work policies\leave_and_absence.txt
+page_content='Regular part-time employees (defined as working between 20 and 29 hours per week) accrue PTO on a strict pro-rata basis based on their standard scheduled hours. Employees working fewer than 20 hours per week do not accrue PTO.' metadata={'h1': 'Human Resources Policy: Global Leave, Paid Time Off, and Absences', 'h2': '2. Paid Time Off (PTO) Accrual and Tiers', 'h3': '2.2 Part-Time Employees', 'source': 'data/Work policies\\leave_and_absence.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-4001-V6', 'effective_date': '** January 1, 2026', 'policy_owner': '** Global Human Resources & Employee Success'}
+----------------------
+Table preservation resulted in 30 chunks for document: data/Work policies\leave_and_absence.txt
+----------------------
+Overlap applied resulted in 30 chunks for document: data/Work policies\leave_and_absence.txt
+----------------------
+Header-based split resulted in 24 chunks for document: data/Work policies\performance and compensation.txt
+page_content='* **Timeline:** November 15th to January 31st.
+* **Purpose:** The comprehensive evaluation of the employee's impact over the preceding 12 months.
+* **Outcomes:** Formal performance ratings are assigned, and decisions regarding annual merit increases, bonuses, and promotions are finalized.
+* **Eligibility Cutoff:** To receive a formal Year-End rating and be eligible for the subsequent merit cycle, an employee must have been hired on or before September 30th of the review year. Employees hired on or after October 1st will receive a "Too New to Evaluate" (TN) status.' metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '2. The Annual Performance Cycle (H1 and H2)', 'h3': '2.2 Year-End Annual Review (H2)', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}
+----------------------
+Table preservation resulted in 24 chunks for document: data/Work policies\performance and compensation.txt
+----------------------
+Overlap applied resulted in 25 chunks for document: data/Work policies\performance and compensation.txt
+----------------------
+Total chunks created: 227
+[Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '7. Promotion Criteria and Eligibility', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content='A promotion is defined as a transition to a higher job grade, reflecting a significant increase in scope, complexity, and responsibility.'), Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '7. Promotion Criteria and Eligibility', 'h3': '7.1 Minimum Tenure Guidelines', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content='To be eligible for a promotion, an employee must have served in their current role for a minimum of eighteen (18) continuous months.\n* *Departmental Exception:* Due to rapid scaling, employees within the Engineering and Product Development departments are eligible for promotion review after twelve (12) continuous months in role.'), Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '7. Promotion Criteria and Eligibility', 'h3': '7.2 The "Operating at Level" Requirement', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content='Promotions are not granted based on potential. An employee must demonstrably perform the duties of the higher-level role for at least three (3) months prior to the formal promotion request being submitted.'), Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '7. Promotion Criteria and Eligibility', 'h3': '7.3 Compensation upon Promotion', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content="Promoted employees will receive an immediate base salary increase to bring them, at minimum, to the 25th percentile of the new role's salary band. If their current salary already exceeds the 25th percentile of the new band, they will receive a standard 8% promotional increase."), Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '8. Off-Cycle Compensation Adjustments', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content='Compensation adjustments outside the formal Year-End cycle are heavily restricted and require VP and HR Business Partner approval.\n* **Market Adjustments:** May be requested if HR data indicates a specific role\'s compensation has fallen significantly below the 50th percentile of the external market.\n* **Counter-Offers:** The organization has a strict "No Counter-Offer" policy. Managers are prohibited from requesting off-cycle salary increases to retain an employee who has accepted an offer from a competitor.'), Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '9. Impact of Disciplinary Action (PIPs)', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content='Performance and compensation are directly linked to the Global Code of Conduct (cross-reference HR-POL-5050-V4).\n* Any employee actively on a Performance Improvement Plan (PIP) or under a Final Written Warning as of November 15th is automatically ineligible for a Year-End merit increase, an annual bonus payout, or a promotion, regardless of their financial or operational metrics.'), Document(metadata={'h1': 'Human Resources Policy: Performance Management, Compensation, and Career Advancement', 'h2': '10. Separation and Compensation Forfeiture', 'source': 'data/Work policies\\performance and compensation.txt', 'policy_category': 'Work policies', 'document_id': '** HR-POL-6002-V5', 'effective_date': '** April 1, 2026', 'policy_owner': '** Global Total Rewards & Talent Management'}, page_content="* **Bonuses:** To receive the Annual Bonus payout (typically distributed in March), the employee must be actively employed and in good standing on the date of payout. If an employee resigns on February 28th, they forfeit their entire bonus for the previous performance year.\n* **Equity:** Unvested RSUs are immediately canceled and returned to the corporate equity pool at 5:00 PM local time on the employee's final date of employment.")]
+✅ Ingestion complete!

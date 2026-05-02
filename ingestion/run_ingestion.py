@@ -2,7 +2,7 @@ import os
 from ingestion.loaders.pdf_loader import load_pdf
 from ingestion.loaders.text_loader import load_text_file
 from ingestion.chunking.chunk_docs import split_docs
-# from vectorstore.qdrant_client import vectorstore
+from vectorstore.pinecone_client import vectorstore
 
 DATA_PATH = "data/"
 
@@ -29,10 +29,9 @@ def run():
     print(f"Total documents loaded: {len(all_docs)}")
     chunks = split_docs(all_docs)
     print(f"Total chunks created: {len(chunks)}")
-    # print(chunks[5])
     # print(chunks[0])  # Print the content of the first chunk for verification
     # exit()
-    # vectorstore.add_documents(chunks)
+    vectorstore.add_documents(chunks)
 
     print("✅ Ingestion complete!")
 
