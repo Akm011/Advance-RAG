@@ -3,7 +3,6 @@ from retrieval.reranker.cross_encoder import rerank
 from retrieval.filtering.pre_filter import detect_category
 from retrieval.filtering.post_filter import filter_latest_versions
 from retrieval.query_transform.multi_query import generate_queries
-from get_llm import get_llm
 from vectorstore.pinecone_client import vectorstore
 
 
@@ -65,7 +64,7 @@ def retrieve_context(query: str):
     return "\n\n".join([chunk.page_content for chunk in top_chunks])
     # return "DONE"
 
-res = retrieve_context("What are baggage allowances for travel policy?")
-print("--------------------------------------")
-print("final retrieved context:")
-print(res)
+# res = retrieve_context("What are baggage allowances for travel policy?")
+# print("--------------------------------------")
+# print("final retrieved context:")
+# print(res)

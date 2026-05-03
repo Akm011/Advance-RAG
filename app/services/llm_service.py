@@ -1,22 +1,17 @@
-from openai import OpenAI
-import os
+from get_llm import get_llm
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+llm = get_llm()
 
-def generate_answer(query, context):
+def generate_answer(query: str, context: str):
     prompt = f"""
     Answer the question using ONLY the context below.
-    
+
     Context:
     {context}
-    
+
     Question:
     {query}
     """
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
-    )
-
-    return response.choices[0].message.content
+    response = llm.invoke(prompt)
+    return response.content
