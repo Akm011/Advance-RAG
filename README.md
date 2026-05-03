@@ -1,45 +1,37 @@
-# 🚀 Advanced RAG System – Policy Intelligence Engine
+# 🚀 Advanced RAG Policy Engine (Production-Ready)
 
 ## 📌 Overview
 
-This project implements a **production-grade Retrieval-Augmented Generation (RAG)** system for querying enterprise policy documents.
+This project implements a **production-grade Retrieval-Augmented Generation (RAG)** system for querying enterprise policy documents with high accuracy.
 
-Unlike naive RAG, this system focuses on:
+It goes beyond basic RAG by incorporating:
 
-* Context-aware ingestion
-* Metadata-driven filtering
-* Query transformation (HyDE + Multi-query)
-* High-precision retrieval with reranking
+* ✅ Semantic + structured ingestion
+* ✅ Metadata-aware retrieval
+* ✅ Query transformation (HyDE + Multi-query)
+* ✅ Pre & post filtering
+* ✅ Cross-encoder reranking
+* ✅ FastAPI-based API layer
 
 ---
 
-## 🧠 Architecture
+## 🧠 System Architecture
 
 ```text
 User Query
    ↓
 Query Transformation (Multi-query + HyDE)
    ↓
-Metadata Routing (Category Detection)
+Metadata Routing (Pre-filter)
    ↓
 Vector Search (Pinecone)
    ↓
-Post-filtering (Latest Policy Version)
+Post-filter (latest version)
    ↓
-Reranking (Cross-Encoder)
+Reranker (Cross-Encoder)
    ↓
 LLM Answer Generation
 ```
-
----
-
-## ⚙️ Tech Stack
-
-* **LLM**: OpenAI (gpt-4o-mini)
-* **Vector DB**: Pinecone
-* **Reranker**: BGE (bge-reranker-large)
-* **Framework**: LangChain
-* **Embeddings**: OpenAI `text-embedding-3-large`
 
 ---
 
@@ -48,18 +40,49 @@ LLM Answer Generation
 ```text
 project/
 │
-├── ingestion/
-│   ├── loaders/
+├── app/                        # API Layer (FastAPI)
+│   ├── api/
+│   │   ├── routes.py
+│   │   └── dependencies.py
+│   ├── core/
+│   │   ├── config.py
+│   │   └── logging.py
+│   ├── models/
+│   │   ├── request_models.py
+│   │   └── response_models.py
+│   ├── services/
+│   │   ├── llm_service.py
+│   │   ├── query_service.py
+│   │   ├── rerank_service.py
+│   │   └── retrieval_service.py
+│   └── main.py
+│
+├── ingestion/                 # Data ingestion pipeline
 │   ├── chunking/
+│   │   ├── semantic_chunker.py
+│   │   ├── markdown_chunker.py
+│   │   ├── table_handler.py
+│   │   └── chunk_docs.py
+│   ├── loaders/
+│   │   ├── pdf_loader.py
+│   │   ├── text_loader.py
+│   │   └── docx_loader.py
+│   ├── metadata/
+│   │   ├── extractor.py
+│   │   └── schema.py
+│   ├── embeddings/
+│   │   └── embedding_model.py
+│   ├── pipelines/
+│   │   └── ingest_pipeline.py
 │   └── run_ingestion.py
 │
-├── retrieval/
+├── retrieval/                 # Retrieval pipeline
+│   ├── filtering/
+│   │   ├── pre_filter.py
+│   │   └── post_filter.py
 │   ├── query_transform/
 │   │   ├── hyde.py
 │   │   └── multi_query.py
-│   ├── filtering/
-│   │   ├── get_category.py
-│   │   └── post_filter.py
 │   ├── reranker/
 │   │   └── cross_encoder.py
 │   └── orchestrator.py
@@ -75,17 +98,20 @@ project/
 
 ## 🔄 Pipeline Breakdown
 
-### 1. 📥 Ingestion Engine
+### 1. 📥 Ingestion Pipeline
 
-* Parses documents (PDF / TXT)
-* Performs **semantic chunking**
-* Adds metadata:
+* Supports: PDF, TXT, DOCX
+* Performs:
+
+  * Markdown-aware chunking
+  * Table preservation
+  * Semantic chunking
+* Extracts metadata:
 
   * `document_id`
   * `policy_category`
   * `effective_date`
-  * headers (`h1`, `h2`)
-* Stores embeddings in Pinecone
+  * headers (H1, H2)
 
 ---
 
@@ -93,17 +119,20 @@ project/
 
 #### ✅ Multi-Query Expansion
 
-Generates multiple variations of user query:
+Generates multiple semantic variations:
 
 ```text
-"What are taxi rules?"
-→ "Ground transportation reimbursement"
-→ "Uber policy"
+"Taxi reimbursement?"
+→ "Ground transport policy"
+→ "Uber reimbursement rules"
 ```
+
+---
 
 #### ✅ HyDE (Hypothetical Document Embeddings)
 
-LLM generates a **fake answer** to improve retrieval relevance.
+* LLM generates a synthetic answer
+* Improves retrieval by matching document structure
 
 ---
 
@@ -111,43 +140,52 @@ LLM generates a **fake answer** to improve retrieval relevance.
 
 #### 🔹 Pre-Filtering
 
-Before retrieval:
-
 ```sql
 WHERE policy_category = 'security'
 ```
 
-Prevents irrelevant domains.
-
-#### 🔹 Post-Filtering
-
-After retrieval:
-
-* Keeps only **latest policy version**
-* Uses `effective_date`
+Prevents irrelevant domain retrieval.
 
 ---
 
-### 4. 📊 Retrieval
+#### 🔹 Post-Filtering
+
+* Keeps only latest policy version
+* Based on `effective_date`
+
+---
+
+### 4. 📊 Vector Retrieval
 
 * Uses Pinecone similarity search
-* `k = 25` per query
+* `k = 20–30` per query
 * Multi-query + HyDE → high recall
 
 ---
 
 ### 5. 🎯 Reranking
 
-* Uses Cross-Encoder (`bge-reranker-large`)
-* Scores query + chunk together
-* Selects **Top 5 most relevant chunks**
+* Uses Cross-Encoder (BGE reranker)
+* Evaluates query + chunk jointly
+* Selects Top 5 chunks
 
 ---
 
 ### 6. 🤖 Answer Generation
 
-* Final LLM response uses only retrieved context
-* Prevents hallucination
+* Uses OpenAI LLM
+* Strictly grounded in retrieved context
+* Minimizes hallucination
+
+---
+
+## ⚙️ Tech Stack
+
+* **LLM**: OpenAI
+* **Vector DB**: Pinecone
+* **Reranker**: BGE
+* **Framework**: LangChain
+* **API**: FastAPI
 
 ---
 
@@ -172,12 +210,12 @@ pip install -r requirements.txt
 
 ### 3. Environment Variables
 
-Create `.env` file:
+Create `.env`:
 
 ```env
-OPENAI_API_KEY=your_openai_key
-PINECONE_API_KEY=your_pinecone_key
-HF_TOKEN=your_huggingface_token
+OPENAI_API_KEY=your_key
+PINECONE_API_KEY=your_key
+HF_TOKEN=your_token
 ```
 
 ---
@@ -190,10 +228,18 @@ python -m ingestion.run_ingestion
 
 ---
 
-## 🔍 Run Retrieval
+## 🚀 Run API
 
 ```bash
-python -m retrieval.orchestrator
+uvicorn app.main:app --reload
+```
+
+---
+
+## 🔍 Test API
+
+```text
+http://localhost:8000/docs
 ```
 
 ---
@@ -202,12 +248,8 @@ python -m retrieval.orchestrator
 
 ### 🔸 Pinecone Index Limit
 
-Free tier allows only **5 indexes**
-
-Fix:
-
-* Reuse index
-* Avoid creating index on every run
+* Free tier → max 5 indexes
+* Use **check-before-create logic**
 
 ---
 
@@ -218,29 +260,17 @@ Fix:
 | text-embedding-3-small | 1536      |
 | text-embedding-3-large | 3072      |
 
-👉 Must match Pinecone index
-
 ---
 
 ### 🔸 Metadata Consistency
 
-Ensure:
-
 ```python
-policy_category = "security"  # lowercase
+policy_category = "security"  # must match filter exactly
 ```
 
 ---
 
-### 🔸 Date Format Handling
-
-Your system uses:
-
-```text
-June 1, 2026
-```
-
-Use:
+### 🔸 Date Parsing
 
 ```python
 datetime.strptime(date, "%B %d, %Y")
@@ -252,35 +282,36 @@ datetime.strptime(date, "%B %d, %Y")
 
 If retrieval fails:
 
+* [ ] Disable metadata filter
 * [ ] Check Pinecone index exists
-* [ ] Verify metadata stored correctly
-* [ ] Disable filter and test retrieval
-* [ ] Check embedding dimension
-* [ ] Print sample metadata
+* [ ] Validate embeddings dimension
+* [ ] Print metadata from stored docs
+* [ ] Verify ingestion ran successfully
 
 ---
 
-## 📈 Future Improvements
+## 📈 Future Enhancements
 
 * Hybrid search (BM25 + vector)
 * Query decomposition
 * LangGraph orchestration
 * RAG evaluation (RAGAS)
 * Streaming responses
+* Chat memory
 
 ---
 
 ## 🧠 Key Learnings
 
 * Retrieval quality > LLM quality
-* Metadata filtering prevents hallucination
+* Metadata filtering reduces hallucination
 * Reranking is critical for precision
-* HyDE improves semantic recall
+* HyDE improves semantic alignment
 
 ---
 
 ## 📌 One-line Summary
 
-> A production-grade RAG system with query expansion, metadata filtering, and reranking for accurate policy retrieval.
+> A production-ready RAG system combining semantic search, metadata filtering, and reranking for accurate policy intelligence.
 
 ---
