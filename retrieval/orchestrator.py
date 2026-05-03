@@ -1,6 +1,7 @@
 from retrieval.query_transform.hyde import generate_hypothetical_answer
 from retrieval.reranker.cross_encoder import rerank
-from retrieval.filtering.get_category import detect_category
+from retrieval.filtering.pre_filter import detect_category
+from retrieval.filtering.post_filter import filter_latest_versions
 from retrieval.query_transform.multi_query import generate_queries
 from get_llm import get_llm
 from vectorstore.pinecone_client import vectorstore
@@ -51,6 +52,9 @@ def retrieve_context(query: str):
     print(f"Sample retrieved document: {docs[:5]}...")
     print("--------------------------------------")
 
+    # docs = filter_latest_versions(docs)
+    # print(f"After post-filter (latest versions): {len(docs)} docs")
+
     # Step 4: Rerank
     top_chunks = rerank(query, docs)
     print(f"Top chunks after reranking: {len(top_chunks)}")
@@ -61,7 +65,7 @@ def retrieve_context(query: str):
     return "\n\n".join([chunk.page_content for chunk in top_chunks])
     # return "DONE"
 
-# res = retrieve_context("What are the three requirements for an employee to use their personal smartphone for corporate Slack access?")
-# print("--------------------------------------")
-# print("final retrieved context:")
-# print(res)
+res = retrieve_context("What are baggage allowances for travel policy?")
+print("--------------------------------------")
+print("final retrieved context:")
+print(res)

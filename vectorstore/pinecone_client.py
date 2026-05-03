@@ -12,7 +12,7 @@ if not api_key:
 
 pc = Pinecone(api_key=api_key)
 
-index_name = "test-index"
+index_name = "policy-index"
 
 # ✅ Create index ONLY if not exists
 if index_name not in [i.name for i in pc.list_indexes()]:
